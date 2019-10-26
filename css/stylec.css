@@ -1,4 +1,3 @@
-/*The main sheetstyle file*/
 body,
 html {
   font-family: Tahoma, Geneva, sans-serif;
@@ -16,22 +15,18 @@ p {
 tr:nth-child(even) {
   background-color: #f4f4f4;
 }
-th,
-td {
+td,
+th {
   padding: 0.1em 0.5em;
 }
 th {
-  font-weight: bold;
+  font-weight: 700;
   text-align: left;
-  background-color: #eee;
+  background-color: rgba(238,238,238,0.3);
 }
 #list {
   width: 100%;
   border: 0 solid #aaa;
-}
-header {
-  height: 100px;
-  padding-bottom: 10px;
 }
 header img {
   height: 100px;
@@ -50,8 +45,25 @@ a:hover {
   width: 80%;
   margin: 0 auto;
 }
+#page_next {
+  margin-bottom: 20px;
+}
+#page_prev {
+  margin-bottom: 20px;
+}
 tr:hover {
   background-color: rgba(128,128,128,0.3);
+}
+.tr-title:hover {
+  background-color: rgba(238,238,238,0.3);
+}
+.blog-name {
+  color: #000;
+  text-decoration: none;
+}
+.blog-name:hover {
+  color: #000;
+  border-bottom: 1px solid #000;
 }
 .gap {
   height: 0;
@@ -62,7 +74,4 @@ tr:hover {
 }
 #page_prev {
   float: right;
-}
-#post-footer {
-  margin-bottom: 200px;
 }
