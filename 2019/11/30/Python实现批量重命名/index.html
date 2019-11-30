@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html lang="zh-cmn-Hans">
+
+  <head>
+    <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+  <meta name="keywords" content="千里码,Java,Python,编程,技术博客,编程入门,编程新手">
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>
+  千里码 - 上下求索，驽马不舍
+</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<script src="/js/highlight.pack.js"></script>
+<link rel="stylesheet" href="/css/lato-font.css">
+  </head>
+
+  <body>
+    <div id="content">
+      <header>
+        <a class="blog-name" href="/">
+    <img src="/logo-boxcode.png">
+</a>
+
+
+    <h1>千里码</h1>
+
+
+
+    <h2>上下求索，驽马不舍</h2>
+
+      </header>
+      <article>
+        <div>
+    
+
+    <div class="gap"></div>
+
+    <h1>
+        Python实现批量重命名
+    </h1>
+
+    <div>
+        <p>最近在网络上下载了一部漫画，漫画是图片形式的，下载下来后才发现每一张漫画图片的文件名都是没有规律且又长又复杂的，想要把它们改成按数字递增规律的，一个一个去改文件名工作量太大，浪费太多时间，于是心想用Python写一个脚本实现批量重命名的操作。</p>
+<p><img src="https://s2.ax1x.com/2019/11/30/QZkSKg.png" alt="文件存放在 D:/temp 路径下，文件名类似上图，图片很多，这里仅用少部分做演示"></p>
+<blockquote>
+<p><em>文件存放在 D:/temp 路径下，文件名类似上图，图片很多，这里仅用少部分做演示</em></p>
+</blockquote>
+<p>为了完成脚本，查阅了Python有关文件名的库，发现需要用到Python标准库中的<strong>os</strong>库。</p>
+<h2 id="一、重命名函数"><a href="#一、重命名函数" class="headerlink" title="一、重命名函数"></a>一、重命名函数</h2><p>Python中有一个给文件重命名的函数：</p>
+<pre><code class="python">os.rename(src, dst, *, src_dir_fd=None, dst_dir_fd=None)</code></pre>
+<p>该函数就是将文件名从src改为dst，后两个参数用不到先忽略。</p>
+<h2 id="二、获取文件名函数"><a href="#二、获取文件名函数" class="headerlink" title="二、获取文件名函数"></a>二、获取文件名函数</h2><p>我们还需要获取原文件名，也就是src。</p>
+<p><strong>os</strong>库中还有一个函数可以获取文件名：</p>
+<pre><code class="python">os.listdir(path=&#39;.&#39;)</code></pre>
+<p>该函数可以列出某个目录下的所有文件名</p>
+<p>所有我们用一个<strong>for</strong>循环可以获取每一个文件名</p>
+<pre><code class="python">for file in os.listdir(r&#39;D:/temp&#39;):
+    print(file)</code></pre>
+<p>输出：</p>
+<p>%80%90%E4%B8%89%E7%A7%8B%E4.jpg</p>
+<p>%AE%E5%8B%92%E6%9E%81%E7%A6.jpg</p>
+<p>%E6%B3%B0%E6%99%AE%E5%8B%92.jpg</p>
+<p>%E8%A3%85%E5%85%E6%B3%B0%E6.jpg</p>
+<h2 id="三、路径合并函数"><a href="#三、路径合并函数" class="headerlink" title="三、路径合并函数"></a>三、路径合并函数</h2><p>由于图片文件和Python脚本并不在同一文件夹下，所以此时的src和dst并不是简单的文件名，而是由路径+文件名组成。例如，文件%80%90%E4%B8%89%E7%A7%8B%E4.jpg其实是<br>E:/temp/%80%90%E4%B8%89%E7%A7%8B%E4.jpg，所以我们需要将两部分组合起来。</p>
+<p>Python的<strong>os</strong>库中有一个函数：</p>
+<pre><code class="python">os.path.join(path, *paths)</code></pre>
+<p>该函数合理地拼接一个或多个路径部分，返回值是 path 和 *paths 所有值的连接。</p>
+<p>上面的例子就可以像下面这样写：</p>
+<pre><code class="python">os.path.join(r&#39;D:/temp&#39;,&#39;%80%90%E4%B8%89%E7%A7%8B%E4.jpg&#39;)</code></pre>
+<h2 id="批量重命名脚本"><a href="#批量重命名脚本" class="headerlink" title="批量重命名脚本"></a>批量重命名脚本</h2><p>于是利用上面这些知识可以写出下面这个完整的脚本：</p>
+<pre><code class="python">import os
+
+path = r&quot;D:/temp&quot;
+
+num = 1
+for file in os.listdir(path):
+    os.rename(os.path.join(path,file),os.path.join(path,str(num))+&quot;.jpg&quot;)
+    num = num + 1</code></pre>
+<p>运行一下，可以看到结果如下：</p>
+<p><img src="https://s2.ax1x.com/2019/11/30/QZkprQ.png" alt="满足了我们的需求"></p>
+<p>满足了我们的需求。</p>
+
+    </div>
+
+</div>
+
+<div id="post-footer">
+    <div id="page_next">
+        
+            <a href="/2019/10/26/hello-world/" title="Hello World">
+                上一篇：Hello World
+            </a>
+        
+    </div>
+    
+    
+    <div id="page_prev">
+        
+    </div>
+</div>
+
+      </article>
+    </div>
+    <script>
+    hljs.initHighlightingOnLoad();
+</script>
+  </body>
+
+</html>
