@@ -15,7 +15,6 @@ p {
 }
 #content {
   width: 65%;
-  min-width: 640px;
   max-width: 960px;
 }
 tr:nth-child(even) {
