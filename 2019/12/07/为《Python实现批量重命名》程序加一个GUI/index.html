@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html lang="zh-cmn-Hans">
+
+  <head>
+    <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+  <meta name="keywords" content="千里码,Java,Python,编程,技术博客,编程入门,编程新手">
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>
+  千里码 - 上下求索，驽马不舍
+</title>
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<script src="/js/highlight.pack.js"></script>
+<link rel="stylesheet" href="/css/lato-font.css">
+  </head>
+
+  <body>
+    <div id="content">
+      <header>
+        <a class="blog-name" href="/">
+    <img src="/logo-boxcode.png">
+</a>
+
+
+    <h1>千里码</h1>
+
+
+
+    <h2>上下求索，驽马不舍</h2>
+
+      </header>
+      <article>
+        <div>
+    
+
+    <div class="gap"></div>
+
+    <h1>
+        为《Python实现批量重命名》程序加一个GUI
+    </h1>
+
+    <div>
+        <p>前一篇文章（<a href="../../../../2019/11/30/Python实现批量重命名/">Python实现批量重命名</a>），用Pyton做了一个批量重命名的小脚本程序，但是觉得这个用起来不太方便，于是想要进行一些改进，最好再加上GUI。</p>
+<h2 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h2><p>首先，它的修改路径是写死在代码中的：</p>
+<pre><code class="Pyton"># 图片存放的路径
+path = r&quot;D:/temp&quot;</code></pre>
+<p>所以这一次想要改成可以由用户自己选择的形式，就像下面这样：</p>
+<p><img src="https://s2.ax1x.com/2019/12/07/QtRZrj.png" alt="选择文件夹"></p>
+<h2 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h2><p>为程序加一个简单的GUI界面，让它有更好的体验。</p>
+<p>该GUI界面是使用Python自带的<strong>tkinter</strong>库实现的。</p>
+<p><img src="https://s2.ax1x.com/2019/12/07/QtRDzD.png" alt="GUI界面"></p>
+<h2 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h2><p>基本操作演示</p>
+<p><img src="https://s2.ax1x.com/2019/12/07/Qtoc1x.gif" alt="基本操作演示"></p>
+<p>程序完整的代码如下（<a href="https://github.com/Yajanan/FilesBatchRename/blob/master/FilesBatchRenameWithGUI.py" target="_blank" rel="noopener">GitHub-Yajanan/FilesPathRename/FilesBatchRenameWithGUI.py</a>）：</p>
+<pre><code class="Python"># FilesBatchRenameWithGUI.py
+
+# 导入需要的库
+import tkinter as tk
+from tkinter import filedialog
+import os
+
+# 控制文件列表显示函数
+def DisplayList():
+    listbox.delete(0,tk.END)
+    for file in os.listdir(path.get()):
+        listbox.insert(tk.END,file)
+
+# 获取文件夹路径函数
+def GetPath():
+    filepath = filedialog.askdirectory()
+    path.set(filepath)
+    DisplayList()
+
+# 批量重命名函数
+def HandelFiles():
+    num = 1
+    for file in os.listdir(path.get()):
+        print(file)
+        os.rename(os.path.join(path.get(),file),os.path.join(path.get(),str(num))+&#39;.&#39;+file.split(&#39;.&#39;)[-1])
+        num = num + 1
+    DisplayList()
+
+
+root = tk.Tk()
+root.title(&#39;批量重命名&#39;)
+root.resizable(0,0)
+
+path = tk.StringVar() # 定义路径变量
+
+# 定义控件
+listbox = tk.Listbox(root)
+label = tk.Label(root,text=&quot;文件夹路径：&quot;)
+entry = tk.Entry(root,textvariable=path)
+button1 = tk.Button(root,text=&quot;选择路径&quot;,command=GetPath)
+button2 = tk.Button(root,text=&quot;开始处理&quot;,command=HandelFiles)
+
+# 调整控件布局
+label.grid(row=0,column=0)
+entry.grid(row=0,column=1)
+button1.grid(row=0,column=2)
+button2.grid(row=0,column=3)
+listbox.grid(row=1,column=0,columnspan=4,sticky=tk.W+tk.E)
+
+root.mainloop()</code></pre>
+<p>（全文完）</p>
+
+    </div>
+
+</div>
+
+<div id="post-footer">
+    <div id="page_next">
+        
+            <a href="/2019/11/30/Python实现批量重命名/" title="Python实现批量重命名">
+                上一篇：Python实现批量重命名
+            </a>
+        
+    </div>
+    
+    
+    <div id="page_prev">
+        
+    </div>
+</div>
+
+      </article>
+    </div>
+    <script>
+    hljs.initHighlightingOnLoad();
+</script>
+  </body>
+
+</html>
