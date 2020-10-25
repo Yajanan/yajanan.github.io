@@ -1,7 +1,10 @@
 /*The main sheetstyle file*/
+::selection {
+  background-color: rgba(66,139,202,0.2);
+}
 body,
 html {
-  font-family: Tahoma, Geneva, sans-serif;
+  font-family: Lato, Tahoma, Geneva, sans-serif;
   background-color: #fff;
 }
 h1,
@@ -29,10 +32,14 @@ th {
   text-align: left;
   background-color: #eee;
 }
-#list {
+#list,
+#projects {
   width: 100%;
   border: 1px solid rgba(0,0,0,0.1);
   border-top: 0;
+}
+#projects {
+  margin-top: 10px;
 }
 img {
   max-width: 80%;
@@ -45,6 +52,18 @@ header img {
   width: 100px;
   display: block;
   float: left;
+  margin-right: 20px;
+}
+#blog-nav {
+  float: right;
+}
+#blog-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#blog-nav li {
+  display: inline;
 }
 a {
   color: #428bca;
@@ -64,12 +83,8 @@ tr:hover {
   height: 0;
   border: 1px dotted rgba(128,128,128,0.3);
 }
-#page_next {
-  float: left;
-}
-#page_prev {
-  float: right;
-}
 #post-footer {
   margin-bottom: 200px;
+  display: flex;
+  justify-content: space-between;
 }

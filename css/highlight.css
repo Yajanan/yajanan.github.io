@@ -1,69 +1,82 @@
+/*
+
+Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
+
+*/
+
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
-  color: #383a42;
+  padding: 1em;
+  background: #657b8312;
+  color: #657b83;
   font-family: Tahoma, Geneva, sans-serif;
-  background-color: rgba(244,244,244,.8);
-  border-radius: 5px;
+  border-radius: 10px;
   line-height: 1.5rem;
+  border: 2px solid #657b8340;
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: #a0a1a7;
-  font-style: italic;
+  color: #93a1a1;
 }
 
-.hljs-doctag,
+/* Solarized Green */
 .hljs-keyword,
-.hljs-formula {
-  color: #a626a4;
+.hljs-selector-tag,
+.hljs-addition {
+  color: #859900;
 }
 
+/* Solarized Cyan */
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: #2aa198;
+}
+
+/* Solarized Blue */
+.hljs-title,
 .hljs-section,
 .hljs-name,
-.hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
-  color: #e45649;
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #268bd2;
 }
 
-.hljs-literal {
-  color: #0184bb;
-}
-
-.hljs-string,
-.hljs-regexp,
-.hljs-addition,
+/* Solarized Yellow */
 .hljs-attribute,
-.hljs-meta-string {
-  color: #50a14f;
-}
-
-.hljs-built_in,
-.hljs-class .hljs-title {
-  color: #c18401;
-}
-
 .hljs-attr,
 .hljs-variable,
 .hljs-template-variable,
-.hljs-type,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-number {
-  color: #986801;
+.hljs-class .hljs-title,
+.hljs-type {
+  color: #b58900;
 }
 
+/* Solarized Orange */
 .hljs-symbol,
 .hljs-bullet,
-.hljs-link,
+.hljs-subst,
 .hljs-meta,
-.hljs-selector-id,
-.hljs-title {
-  color: #4078f2;
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: #cb4b16;
+}
+
+/* Solarized Red */
+.hljs-built_in,
+.hljs-deletion {
+  color: #dc322f;
+}
+
+.hljs-formula {
+  background: #eee8d5;
 }
 
 .hljs-emphasis {
@@ -72,8 +85,4 @@
 
 .hljs-strong {
   font-weight: bold;
-}
-
-.hljs-link {
-  text-decoration: underline;
 }
